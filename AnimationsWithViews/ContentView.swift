@@ -8,9 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isShowingOrange = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Button("Tap Me") {
+                withAnimation {
+                    isShowingOrange.toggle()
+                }
+            }
+            if isShowingOrange {
+            Rectangle()
+                .fill(.orange)
+                .frame(width: 200, height: 200)
+                .transition(.asymmetric(insertion: .scale, removal: .opacity))
+            }
+        }
     }
 }
 
